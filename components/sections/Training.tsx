@@ -31,7 +31,7 @@ const Training: React.FC = () => {
                         </a>
                     </div>
                      <div className="relative h-80 lg:h-96 rounded-lg overflow-hidden shadow-xl">
-                       <img src="https://picsum.photos/800/600?image=180" alt="Leaders meeting in a workshop" className="w-full h-full object-cover"/>
+                       <img src="https://cdn.myportfolio.com/d435fa58-d32c-4141-8a15-0f2bfccdea41/ec69de82-e27e-4257-bb65-4cd370fd83c5_rw_1920.jpg?h=76f8249ba8699cfb157c0de671bc4467" alt="Leaders meeting in a workshop" className="w-full h-full object-cover"/>
                        <div className="absolute inset-0 bg-black/30"></div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@ const Home: React.FC = () => {
 
     return (
         <section id="home" className="relative h-screen flex items-center justify-center text-white pt-16">
-            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://picsum.photos/1600/900?image=29')" }}></div>
+            <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://cdn.myportfolio.com/d435fa58-d32c-4141-8a15-0f2bfccdea41/0ddd1263-65d7-4437-a9d4-7da87db8886e_rw_1920.jpg?h=45648d24405dce454b52ec6d401e7dac')" }}></div>
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative z-10 text-center px-4">
                 <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight">
