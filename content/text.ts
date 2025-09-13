@@ -1,16 +1,18 @@
-
 export const content = {
   en: {
     nav: {
       home: "Home",
       whyThisMatters: "Why This Matters",
-      protocols: "Protocols",
-      training: "Training",
-      emergencyGuide: "Emergency Guide",
-      policies: "Policies",
       resources: "Resources",
       aboutUs: "About Us",
       contact: "Contact",
+      resourcesDropdown: {
+        protocols: "Pastoral Protocols",
+        training: "Training",
+        emergencyGuide: "Emergency Guide",
+        policies: "Policy Templates",
+        allResources: "All Resources",
+      }
     },
     hero: {
       title: "Generations Without Violence",
@@ -83,7 +85,18 @@ export const content = {
       email: "Email",
       message: "Message",
       requestTraining: "I'm interested in requesting training.",
-      submit: "Send Message"
+      submit: "Send Message",
+      submitting: "Sending...",
+      submitSuccessTitle: "Thank You!",
+      submitSuccessMessage: "Your email client should have opened with your message. Please review and send it.",
+      emailAddress: "info@generationswv.org",
+      phoneNumber: "(555) 123-4567",
+      socials: {
+        facebook: "Follow us on Facebook",
+        twitter: "Follow us on Twitter",
+        instagram: "Follow us on Instagram",
+        whatsapp: "Chat on WhatsApp"
+      }
     },
     footer: {
       phrase: "Building safe churches, one generation at a time.",
@@ -94,13 +107,16 @@ export const content = {
     nav: {
       home: "Inicio",
       whyThisMatters: "¿Por qué importa?",
-      protocols: "Protocolos",
-      training: "Entrenamiento",
-      emergencyGuide: "Guía de Emergencia",
-      policies: "Políticas",
       resources: "Recursos",
       aboutUs: "Quiénes somos",
       contact: "Contacto",
+      resourcesDropdown: {
+        protocols: "Protocolos Pastorales",
+        training: "Entrenamiento",
+        emergencyGuide: "Guía de Emergencia",
+        policies: "Modelos de Políticas",
+        allResources: "Todos los Recursos",
+      }
     },
     hero: {
       title: "Generaciones Sin Violencia",
@@ -173,7 +189,18 @@ export const content = {
       email: "Correo electrónico",
       message: "Mensaje",
       requestTraining: "Estoy interesado/a en solicitar entrenamiento.",
-      submit: "Enviar Mensaje"
+      submit: "Enviar Mensaje",
+      submitting: "Enviando...",
+      submitSuccessTitle: "¡Gracias!",
+      submitSuccessMessage: "Tu cliente de correo electrónico debería haberse abierto con tu mensaje. Por favor, revísalo y envíalo.",
+      emailAddress: "info@generationswv.org",
+      phoneNumber: "(555) 123-4567",
+      socials: {
+        facebook: "Síguenos en Facebook",
+        twitter: "Síguenos en Twitter",
+        instagram: "Síguenos en Instagram",
+        whatsapp: "Chatea por WhatsApp"
+      }
     },
     footer: {
       phrase: "Construyendo iglesias seguras, una generación a la vez.",

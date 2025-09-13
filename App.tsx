@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
@@ -12,27 +11,30 @@ import PolicyTemplates from './components/sections/PolicyTemplates';
 import Resources from './components/sections/Resources';
 import AboutUs from './components/sections/AboutUs';
 import Contact from './components/sections/Contact';
+import AnimatedSection from './components/AnimatedSection';
+import BackToTopButton from './components/BackToTopButton';
 
-const App: React.FC = () => {
+function App() {
   return (
     <LanguageProvider>
-      <div className="flex flex-col min-h-screen">
+      <div className="bg-white">
         <Header />
-        <main className="flex-grow">
+        <main>
           <Home />
-          <WhyThisMatters />
-          <PastoralProtocols />
-          <Training />
-          <EmergencyGuide />
-          <PolicyTemplates />
-          <Resources />
-          <AboutUs />
-          <Contact />
+          <AnimatedSection><WhyThisMatters /></AnimatedSection>
+          <AnimatedSection><PastoralProtocols /></AnimatedSection>
+          <AnimatedSection><Training /></AnimatedSection>
+          <AnimatedSection><EmergencyGuide /></AnimatedSection>
+          <AnimatedSection><PolicyTemplates /></AnimatedSection>
+          <AnimatedSection><Resources /></AnimatedSection>
+          <AnimatedSection><AboutUs /></AnimatedSection>
+          <AnimatedSection><Contact /></AnimatedSection>
         </main>
         <Footer />
+        <BackToTopButton />
       </div>
     </LanguageProvider>
   );
-};
+}
 
 export default App;

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { content } from '../content/text';
@@ -19,7 +18,8 @@ const Footer: React.FC = () => {
                         <h3 className="text-lg font-semibold text-white mb-2">Quick Links</h3>
                         <ul className="space-y-2">
                             <li><a href="#resources" className="hover:text-white transition-colors">{navContent.resources}</a></li>
-                            <li><a href="#protocols" className="hover:text-white transition-colors">{navContent.protocols}</a></li>
+                            {/* FIX: Corrected property access. 'protocols' is nested under 'resourcesDropdown'. */}
+                            <li><a href="#protocols" className="hover:text-white transition-colors">{navContent.resourcesDropdown.protocols}</a></li>
                             <li><a href="#contact" className="hover:text-white transition-colors">{navContent.contact}</a></li>
                         </ul>
                     </div>
