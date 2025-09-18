@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { content } from '../../content/text';
-import { FacebookIcon, TwitterIcon, InstagramIcon, WhatsAppIcon, ClipboardDocumentListIcon, CheckIcon } from '../Icons';
+import { FacebookIcon, TwitterIcon, InstagramIcon, WhatsAppIcon } from '../Icons';
 
 const Contact: React.FC = () => {
     const { language } = useLanguage();
     const contactContent = content[language].contact;
+
+    // IMPORTANT: Replace this with your own Formspree form endpoint URL.
+    // Go to https://formspree.io/ to create a new form.
+    const FORM_ENDPOINT = "https://formspree.io/f/mvoedrwb";
 
     const [formData, setFormData] = useState({
         name: '',
@@ -13,9 +17,7 @@ const Contact: React.FC = () => {
         message: '',
         requestTraining: false,
     });
-    const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'submitted'>('idle');
-    const [composedMessage, setComposedMessage] = useState('');
-    const [copied, setCopied] = useState<'email' | 'message' | null>(null);
+    const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -29,31 +31,36 @@ const Contact: React.FC = () => {
         }));
     };
 
-    const handleCopy = async (text: string, type: 'email' | 'message') => {
-        try {
-            await navigator.clipboard.writeText(text);
-            setCopied(type);
-            setTimeout(() => setCopied(null), 2000); // Reset after 2 seconds
-        } catch (err) {
-            console.error('Failed to copy text: ', err);
-            alert('Failed to copy. Please copy manually.');
-        }
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setFormStatus('submitting');
         
-        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}\n\n---\n${formData.requestTraining ? '☑️ The user is interested in requesting training.' : ''}`.trim();
+        const data = new FormData(e.currentTarget);
 
-        setComposedMessage(body);
-        setFormStatus('submitted');
+        try {
+            const response = await fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setFormStatus('success');
+                setFormData({ name: '', email: '', message: '', requestTraining: false });
+            } else {
+                console.error('Form submission failed:', await response.json());
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            console.error(error);
+            setFormStatus('error');
+        }
     };
     
-    const handleGoBack = () => {
+    const handleReset = () => {
         setFormStatus('idle');
-        setComposedMessage('');
-        setFormData({ name: '', email: '', message: '', requestTraining: false });
     };
 
     return (
@@ -64,44 +71,32 @@ const Contact: React.FC = () => {
                     <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">{contactContent.text}</p>
                 </div>
                 <div className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                    {formStatus === 'submitted' ? (
+                    {formStatus === 'success' && (
                         <div className="text-center">
-                            <h3 className="font-bold text-xl mb-2">{contactContent.manualEmailTitle}</h3>
-                            <p className="text-gray-600 mb-6">{contactContent.manualEmailInstruction}</p>
-                            
-                            <div className="space-y-4 text-left">
-                                <div>
-                                    <label className="font-bold text-gray-700">{contactContent.emailRecipient}:</label>
-                                    <div className="flex gap-2 mt-1">
-                                        <input type="text" readOnly value={contactContent.emailAddress} className="flex-grow p-2 border rounded bg-gray-100" />
-                                        <button onClick={() => handleCopy(contactContent.emailAddress, 'email')} className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white transition-colors bg-blue-600 rounded-md hover:bg-blue-700 disabled:bg-green-500" disabled={copied === 'email'}>
-                                            {copied === 'email' ? <CheckIcon className="w-5 h-5"/> : <ClipboardDocumentListIcon className="w-5 h-5" />}
-                                            {copied === 'email' ? contactContent.copied : contactContent.copyEmail}
-                                        </button>
-                                    </div>
-                                </div>
-                                 <div>
-                                    <label className="font-bold text-gray-700">{contactContent.emailBody}:</label>
-                                    <div className="flex gap-2 mt-1">
-                                        <textarea readOnly rows={8} value={composedMessage} className="flex-grow p-2 border rounded bg-gray-100 font-mono text-sm"></textarea>
-                                         <button onClick={() => handleCopy(composedMessage, 'message')} className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white transition-colors bg-blue-600 rounded-md hover:bg-blue-700 disabled:bg-green-500" disabled={copied === 'message'}>
-                                            {copied === 'message' ? <CheckIcon className="w-5 h-5"/> : <ClipboardDocumentListIcon className="w-5 h-5" />}
-                                            {copied === 'message' ? contactContent.copied : contactContent.copyMessage}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                             <button onClick={handleGoBack} className="mt-6 text-blue-600 hover:underline">
-                                {contactContent.goBack}
+                            <h3 className="font-bold text-xl mb-2 text-green-600">{contactContent.submitSuccessTitle}</h3>
+                            <p className="text-gray-600 mb-6">{contactContent.submitSuccessMessage}</p>
+                            <button onClick={handleReset} className="mt-6 text-blue-600 hover:underline">
+                                {contactContent.sendAnotherMessage}
                             </button>
                         </div>
-                    ) : (
+                    )}
+                     {formStatus === 'error' && (
+                        <div className="text-center">
+                            <h3 className="font-bold text-xl mb-2 text-red-600">{contactContent.submitErrorTitle}</h3>
+                            <p className="text-gray-600 mb-6">{contactContent.submitErrorMessage}</p>
+                            <button onClick={handleReset} className="mt-6 text-blue-600 hover:underline">
+                                {contactContent.tryAgain}
+                            </button>
+                        </div>
+                    )}
+                    {(formStatus === 'idle' || formStatus === 'submitting') && (
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
                                 <label htmlFor="name" className="block text-gray-700 font-bold mb-2">{contactContent.name}</label>
                                 <input 
                                     type="text" 
-                                    id="name" 
+                                    id="name"
+                                    name="name"
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
@@ -111,7 +106,8 @@ const Contact: React.FC = () => {
                                 <label htmlFor="email" className="block text-gray-700 font-bold mb-2">{contactContent.email}</label>
                                 <input 
                                     type="email" 
-                                    id="email" 
+                                    id="email"
+                                    name="email"
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
@@ -121,6 +117,7 @@ const Contact: React.FC = () => {
                                 <label htmlFor="message" className="block text-gray-700 font-bold mb-2">{contactContent.message}</label>
                                 <textarea 
                                     id="message" 
+                                    name="message"
                                     rows={5} 
                                     value={formData.message}
                                     onChange={handleChange}
@@ -132,6 +129,7 @@ const Contact: React.FC = () => {
                                     <input 
                                         type="checkbox" 
                                         id="requestTraining"
+                                        name="requestTraining"
                                         checked={formData.requestTraining}
                                         onChange={handleChange}
                                         className="form-checkbox h-5 w-5 text-blue-600 focus:ring-blue-500" />
