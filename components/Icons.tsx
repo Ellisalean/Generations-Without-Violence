@@ -103,3 +103,15 @@ export const WhatsAppIcon: React.FC<IconProps> = ({ className }) => (
       <path d="M12.04 2.01C6.58 2.01 2.13 6.46 2.13 12.02c0 1.8.48 3.51 1.34 4.99l-1.4 5.09 5.2-1.38c1.44.83 3.1 1.27 4.77 1.27h.01c5.46 0 9.9-4.45 9.9-9.91s-4.44-9.9-9.9-9.9zm4.35 12.49c-.2.11-.74.37-1.01.37-.27 0-.54-.06-.82-.22-.27-.16-1.12-.52-2.13-1.34s-1.68-1.84-1.92-2.18c-.24-.34-.48-.79-.48-1.06 0-.27.13-.54.34-.74.21-.2.46-.3.6-.3s.35-.01.52.09c.17.1.4.34.48.45.08.11.12.27.16.42.04.16.02.29-.05.42-.07.13-.24.37-.34.48-.1.11-.2.24-.29.37s-.17.27-.08.45c.09.18.42.74.9 1.15.65.56 1.2.74 1.45.85.25.11.39.09.54-.07.15-.16.64-.74.79-.99s.29-.2.48-.11c.19.08 1.18.56 1.38.67.2.11.34.17.39.27.05.1.03.52-.18.73z" />
     </svg>
 );
+
+export const ClipboardDocumentListIcon: React.FC<IconProps> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className={className}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25v8.25A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6" />
+    </svg>
+);
+
+export const CheckIcon: React.FC<IconProps> = ({ className }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+    </svg>
+);

@@ -104,7 +104,15 @@ export const content = {
         twitter: "Follow us on Twitter",
         instagram: "Follow us on Instagram",
         whatsapp: "Chat on WhatsApp"
-      }
+      },
+      manualEmailTitle: "Please Send Your Message",
+      manualEmailInstruction: "To ensure your message is delivered, please copy the details below and send them from your personal email client.",
+      copyEmail: "Copy Email",
+      copyMessage: "Copy Message",
+      copied: "Copied!",
+      emailRecipient: "Recipient",
+      emailBody: "Message Body",
+      goBack: "Go Back to Form",
     },
     footer: {
       title: "Generations Without Violence",
@@ -220,7 +228,15 @@ export const content = {
         twitter: "Síguenos en Twitter",
         instagram: "Síguenos en Instagram",
         whatsapp: "Chatea por WhatsApp"
-      }
+      },
+      manualEmailTitle: "Por favor, envía tu mensaje",
+      manualEmailInstruction: "Para asegurar que tu mensaje sea entregado, por favor copia los detalles a continuación y envíalos desde tu cliente de correo personal.",
+      copyEmail: "Copiar correo",
+      copyMessage: "Copiar mensaje",
+      copied: "¡Copiado!",
+      emailRecipient: "Destinatario",
+      emailBody: "Cuerpo del Mensaje",
+      goBack: "Volver al formulario",
     },
     footer: {
       title: "Generaciones Sin Violencia",

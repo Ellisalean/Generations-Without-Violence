@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { content } from '../../content/text';
-import { FacebookIcon, TwitterIcon, InstagramIcon, WhatsAppIcon } from '../Icons';
+import { FacebookIcon, TwitterIcon, InstagramIcon, WhatsAppIcon, ClipboardDocumentListIcon, CheckIcon } from '../Icons';
 
 const Contact: React.FC = () => {
     const { language } = useLanguage();
@@ -14,6 +14,9 @@ const Contact: React.FC = () => {
         requestTraining: false,
     });
     const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'submitted'>('idle');
+    const [composedMessage, setComposedMessage] = useState('');
+    const [copied, setCopied] = useState<'email' | 'message' | null>(null);
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const target = e.target;
@@ -26,41 +29,31 @@ const Contact: React.FC = () => {
         }));
     };
 
+    const handleCopy = async (text: string, type: 'email' | 'message') => {
+        try {
+            await navigator.clipboard.writeText(text);
+            setCopied(type);
+            setTimeout(() => setCopied(null), 2000); // Reset after 2 seconds
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+            alert('Failed to copy. Please copy manually.');
+        }
+    };
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setFormStatus('submitting');
-
-        const recipientEmail = contactContent.emailAddress;
-        const subject = formData.requestTraining 
-            ? 'Training Request from Website' 
-            : 'Contact Form Submission from Website';
         
-        const body = `
-Name: ${formData.name}
-Email: ${formData.email}
+        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}\n\n---\n${formData.requestTraining ? '☑️ The user is interested in requesting training.' : ''}`.trim();
 
-Message:
-${formData.message}
-
----
-${formData.requestTraining ? '☑️ The user is interested in requesting training.' : ''}
-        `.trim();
-
-        const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        window.location.href = mailtoLink;
-        
-        setTimeout(() => {
-            setFormStatus('submitted');
-            setFormData({
-                name: '',
-                email: '',
-                message: '',
-                requestTraining: false,
-            });
-
-            setTimeout(() => setFormStatus('idle'), 5000);
-        }, 500);
+        setComposedMessage(body);
+        setFormStatus('submitted');
+    };
+    
+    const handleGoBack = () => {
+        setFormStatus('idle');
+        setComposedMessage('');
+        setFormData({ name: '', email: '', message: '', requestTraining: false });
     };
 
     return (
@@ -72,9 +65,35 @@ ${formData.requestTraining ? '☑️ The user is interested in requesting traini
                 </div>
                 <div className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg">
                     {formStatus === 'submitted' ? (
-                        <div className="text-center p-4 bg-green-100 text-green-800 rounded-lg">
-                            <h3 className="font-bold text-lg mb-2">{contactContent.submitSuccessTitle}</h3>
-                            <p>{contactContent.submitSuccessMessage}</p>
+                        <div className="text-center">
+                            <h3 className="font-bold text-xl mb-2">{contactContent.manualEmailTitle}</h3>
+                            <p className="text-gray-600 mb-6">{contactContent.manualEmailInstruction}</p>
+                            
+                            <div className="space-y-4 text-left">
+                                <div>
+                                    <label className="font-bold text-gray-700">{contactContent.emailRecipient}:</label>
+                                    <div className="flex gap-2 mt-1">
+                                        <input type="text" readOnly value={contactContent.emailAddress} className="flex-grow p-2 border rounded bg-gray-100" />
+                                        <button onClick={() => handleCopy(contactContent.emailAddress, 'email')} className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white transition-colors bg-blue-600 rounded-md hover:bg-blue-700 disabled:bg-green-500" disabled={copied === 'email'}>
+                                            {copied === 'email' ? <CheckIcon className="w-5 h-5"/> : <ClipboardDocumentListIcon className="w-5 h-5" />}
+                                            {copied === 'email' ? contactContent.copied : contactContent.copyEmail}
+                                        </button>
+                                    </div>
+                                </div>
+                                 <div>
+                                    <label className="font-bold text-gray-700">{contactContent.emailBody}:</label>
+                                    <div className="flex gap-2 mt-1">
+                                        <textarea readOnly rows={8} value={composedMessage} className="flex-grow p-2 border rounded bg-gray-100 font-mono text-sm"></textarea>
+                                         <button onClick={() => handleCopy(composedMessage, 'message')} className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white transition-colors bg-blue-600 rounded-md hover:bg-blue-700 disabled:bg-green-500" disabled={copied === 'message'}>
+                                            {copied === 'message' ? <CheckIcon className="w-5 h-5"/> : <ClipboardDocumentListIcon className="w-5 h-5" />}
+                                            {copied === 'message' ? contactContent.copied : contactContent.copyMessage}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                             <button onClick={handleGoBack} className="mt-6 text-blue-600 hover:underline">
+                                {contactContent.goBack}
+                            </button>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit}>
