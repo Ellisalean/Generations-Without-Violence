@@ -20,10 +20,7 @@ const ProtocolCard: React.FC<{ title: string, description: string, icon: React.R
             </div>
             <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
         </div>
-        <p className="text-gray-600 mb-4">{description}</p>
-        <button className="text-blue-600 font-semibold hover:underline">
-            {content['en'].protocols.readMore} &rarr;
-        </button>
+        <p className="text-gray-600">{description}</p>
     </div>
 );
 
@@ -50,11 +47,6 @@ const PastoralProtocols: React.FC = () => {
                           />
                         );
                     })}
-                </div>
-                <div className="text-center mt-12">
-                    <a href="#" className="inline-block bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md">
-                        {protoContent.download}
-                    </a>
                 </div>
             </div>
         </section>

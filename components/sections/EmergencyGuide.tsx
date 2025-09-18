@@ -17,17 +17,21 @@ const EmergencyGuide: React.FC = () => {
                     <div className="md:col-span-2 text-center md:text-left">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{guideContent.title}</h2>
                         <p className="text-lg text-gray-600 italic mt-4 mb-6">"{guideContent.text}"</p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-6">
-                            <a href="#" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md">
-                                {guideContent.downloadEN}
-                            </a>
-                             <a href="#" className="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md">
-                                {guideContent.downloadES}
-                            </a>
+                        
+                        <h3 className="text-2xl font-semibold text-gray-800 mb-4">{guideContent.stepsTitle}</h3>
+                        <div className="space-y-4 text-left">
+                            {guideContent.steps.map((step: {title: string, description: string}, index: number) => (
+                                <div key={index} className="flex items-start">
+                                    <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white font-bold rounded-full flex items-center justify-center mr-4 mt-1">
+                                        {index + 1}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-lg text-gray-900">{step.title}</h4>
+                                        <p className="text-gray-600">{step.description}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        <a href="#" className="text-blue-600 font-semibold hover:underline">
-                            {guideContent.link}
-                        </a>
                     </div>
                 </div>
             </div>

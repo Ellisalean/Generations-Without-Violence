@@ -19,9 +19,6 @@ const PolicyTemplates: React.FC = () => {
                          <span key={index} className="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">{item}</span>
                     ))}
                 </div>
-                <a href="#" className="mt-10 inline-block bg-gray-800 hover:bg-gray-900 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md">
-                    {policyContent.button}
-                </a>
             </div>
         </section>
     );

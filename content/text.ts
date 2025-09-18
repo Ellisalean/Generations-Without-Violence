@@ -12,6 +12,10 @@ export const content = {
         emergencyGuide: "Emergency Guide",
         policies: "Policy Templates",
         allResources: "All Resources",
+      },
+      menu: {
+        open: "Open main menu",
+        close: "Close main menu",
       }
     },
     hero: {
@@ -51,10 +55,14 @@ export const content = {
     },
     emergencyGuide: {
       title: "Emergency Response Guide",
-      downloadEN: "Download Flowchart (EN)",
-      downloadES: "Descargar Diagrama (ES)",
       text: "“In the first 15 minutes, clarity saves lives.”",
-      link: "View scripts and safety plan"
+      stepsTitle: "What to Do in a Crisis:",
+      steps: [
+        { title: "Ensure Immediate Safety", description: "Is anyone in immediate danger? If so, contact local authorities (911) right away." },
+        { title: "Listen Without Judgment", description: "Create a safe space for the person to share. Listen more than you speak." },
+        { title: "Offer Support, Not Solutions", description: "Say things like, 'I believe you,' and 'This is not your fault.' Avoid giving unsolicited advice." },
+        { title: "Connect with Us", description: "We are here to provide guidance and connect you with the right resources. Please contact us as soon as possible." }
+      ]
     },
     policyTemplates: {
       title: "Church Policy Templates",
@@ -89,8 +97,8 @@ export const content = {
       submitting: "Sending...",
       submitSuccessTitle: "Thank You!",
       submitSuccessMessage: "Your email client should have opened with your message. Please review and send it.",
-      emailAddress: "info@generationswv.org",
-      phoneNumber: "(555) 123-4567",
+      emailAddress: "generationswithoutviolencegwv@gmail.com",
+      phoneNumber: "+1 (818) 791-7974",
       socials: {
         facebook: "Follow us on Facebook",
         twitter: "Follow us on Twitter",
@@ -99,8 +107,12 @@ export const content = {
       }
     },
     footer: {
+      title: "Generations Without Violence",
       phrase: "Building safe churches, one generation at a time.",
-      credits: "© Generations Without Violence – Ministry Project."
+      credits: "© Generations Without Violence – Ministry Project.",
+      navigate: "Navigate",
+      keyResources: "Key Resources",
+      connect: "Connect"
     }
   },
   es: {
@@ -116,6 +128,10 @@ export const content = {
         emergencyGuide: "Guía de Emergencia",
         policies: "Modelos de Políticas",
         allResources: "Todos los Recursos",
+      },
+      menu: {
+        open: "Abrir menú principal",
+        close: "Cerrar menú principal",
       }
     },
     hero: {
@@ -155,10 +171,14 @@ export const content = {
     },
     emergencyGuide: {
       title: "Guía de Respuesta de Emergencia",
-      downloadEN: "Download Flowchart (EN)",
-      downloadES: "Descargar Diagrama (ES)",
       text: "“En los primeros 15 minutos, la claridad salva vidas.”",
-      link: "Ver guiones y plan de seguridad"
+      stepsTitle: "Qué Hacer en una Crisis:",
+      steps: [
+        { title: "Garantizar la Seguridad Inmediata", description: "¿Hay alguien en peligro inmediato? Si es así, contacte a las autoridades locales (911) de inmediato." },
+        { title: "Escuchar sin Juzgar", description: "Cree un espacio seguro para que la persona comparta. Escuche más de lo que habla." },
+        { title: "Ofrecer Apoyo, no Soluciones", description: "Diga cosas como: 'Te creo' y 'No es tu culpa'. Evite dar consejos no solicitados." },
+        { title: "Conéctese con Nosotros", description: "Estamos aquí para brindar orientación y conectarlo con los recursos adecuados. Por favor, contáctenos lo antes posible." }
+      ]
     },
     policyTemplates: {
       title: "Modelos de Política Eclesial",
@@ -193,8 +213,8 @@ export const content = {
       submitting: "Enviando...",
       submitSuccessTitle: "¡Gracias!",
       submitSuccessMessage: "Tu cliente de correo electrónico debería haberse abierto con tu mensaje. Por favor, revísalo y envíalo.",
-      emailAddress: "info@generationswv.org",
-      phoneNumber: "(555) 123-4567",
+      emailAddress: "generationswithoutviolencegwv@gmail.com",
+      phoneNumber: "+1 (818) 791-7974",
       socials: {
         facebook: "Síguenos en Facebook",
         twitter: "Síguenos en Twitter",
@@ -203,8 +223,12 @@ export const content = {
       }
     },
     footer: {
+      title: "Generaciones Sin Violencia",
       phrase: "Construyendo iglesias seguras, una generación a la vez.",
-      credits: "© Generaciones Sin Violencia – Proyecto Ministerial."
+      credits: "© Generaciones Sin Violencia – Proyecto Ministerial.",
+      navigate: "Navegación",
+      keyResources: "Recursos Clave",
+      connect: "Conectar"
     }
   }
 };

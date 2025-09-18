@@ -43,11 +43,6 @@ const Resources: React.FC = () => {
                         <ResourceCard key={card.title} title={card.title} text={card.text} />
                     ))}
                 </div>
-                <div className="text-center mt-12">
-                     <a href="#" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-md">
-                        {resContent.button}
-                    </a>
-                </div>
             </div>
         </section>
     );

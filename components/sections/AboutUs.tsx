@@ -20,9 +20,6 @@ const AboutUs: React.FC = () => {
                         <blockquote className="mt-6 border-l-4 border-blue-500 pl-4 italic text-gray-600">
                             <p>{aboutContent.quote}</p>
                         </blockquote>
-                        <a href="#" className="mt-8 inline-block bg-transparent border-2 border-blue-600 text-blue-600 font-bold py-3 px-8 rounded-lg text-lg transition duration-300 hover:bg-blue-600 hover:text-white">
-                           {aboutContent.button}
-                        </a>
                     </div>
                 </div>
             </div>
