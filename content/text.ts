@@ -108,23 +108,6 @@ export const content = {
         twitter: "Follow us on Twitter",
         instagram: "Follow us on Instagram",
         whatsapp: "Chat on WhatsApp"
-      },
-      faq: {
-        title: "Frequently Asked Questions",
-        questions: [
-          {
-            q: "How long does it take to get a response?",
-            a: "We are a small team, but we are committed to responding to every message. Please expect a reply within 2-3 business days."
-          },
-          {
-            q: "Is the training available online?",
-            a: "Yes! We offer both in-person and virtual training sessions tailored to your needs. Please mention your preference when you contact us."
-          },
-          {
-            q: "Are the resources and templates free to use?",
-            a: "Absolutely. All our downloadable resources, including protocols and policy templates, are provided free of charge to equip your ministry."
-          }
-        ]
       }
     },
     footer: {
@@ -245,23 +228,6 @@ export const content = {
         twitter: "Síguenos en Twitter",
         instagram: "Síguenos en Instagram",
         whatsapp: "Chatea por WhatsApp"
-      },
-      faq: {
-        title: "Preguntas Frecuentes",
-        questions: [
-          {
-            q: "¿Cuánto tiempo tardan en responder?",
-            a: "Somos un equipo pequeño, pero nos comprometemos a responder a cada mensaje. Por favor, espere una respuesta en un plazo de 2 a 3 días hábiles."
-          },
-          {
-            q: "¿El entrenamiento está disponible en línea?",
-            a: "¡Sí! Ofrecemos sesiones de entrenamiento tanto presenciales como virtuales, adaptadas a sus necesidades. Por favor, mencione su preferencia al contactarnos."
-          },
-          {
-            q: "¿Los recursos y modelos son de uso gratuito?",
-            a: "Absolutamente. Todos nuestros recursos descargables, incluyendo protocolos y modelos de políticas, se proporcionan de forma gratuita para equipar su ministerio."
-          }
-        ]
       }
     },
     footer: {

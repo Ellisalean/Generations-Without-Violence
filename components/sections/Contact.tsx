@@ -1,35 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { content } from '../../content/text';
-import { FacebookIcon, TwitterIcon, InstagramIcon, WhatsAppIcon, ChevronDownIcon } from '../Icons';
-
-const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const uniqueId = `faq-answer-${question.replace(/\s+/g, '-')}`;
-
-    return (
-        <div className="border-b border-gray-200 last:border-b-0">
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex justify-between items-center text-left py-5 px-6 text-lg font-medium text-gray-800 hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-                aria-expanded={isOpen}
-                aria-controls={uniqueId}
-            >
-                <span>{question}</span>
-                <ChevronDownIcon className={`w-6 h-6 text-gray-500 transition-transform duration-300 transform ${isOpen ? 'rotate-180' : ''}`} />
-            </button>
-            {isOpen && (
-                <div 
-                    id={uniqueId}
-                    className="px-6 pb-5 text-gray-600"
-                >
-                    <p>{answer}</p>
-                </div>
-            )}
-        </div>
-    );
-};
-
+import { FacebookIcon, TwitterIcon, InstagramIcon, WhatsAppIcon } from '../Icons';
 
 const Contact: React.FC = () => {
     const { language } = useLanguage();
@@ -185,18 +157,7 @@ const Contact: React.FC = () => {
                     )}
                 </div>
 
-                <div className="max-w-3xl mx-auto mt-16 bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div className="p-8 border-b border-gray-200">
-                         <h3 className="text-2xl font-bold text-gray-900 text-center">{contactContent.faq.title}</h3>
-                    </div>
-                    <div>
-                        {contactContent.faq.questions.map((item: {q: string, a: string}, index: number) => (
-                          <FaqItem key={index} question={item.q} answer={item.a} />
-                        ))}
-                    </div>
-                </div>
-
-                 <div className="text-center mt-12">
+                 <div className="text-center mt-16">
                     <p className="text-gray-700 font-semibold">{contactContent.emailAddress} | {contactContent.phoneNumber}</p>
                     <div className="flex justify-center gap-6 mt-4">
                         <div className="relative group">
