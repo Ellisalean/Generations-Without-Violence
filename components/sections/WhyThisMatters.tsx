@@ -19,7 +19,7 @@ const WhyThisMatters: React.FC = () => {
                        <p>{wtmContent.text}</p>
                     </div>
                     <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-2xl">
-                       <img src="https://images.unsplash.com/photo-1528612943353-ca8a58b1a162?q=80&w=1200&auto=format&fit=crop" alt="Open bible with hands" className="w-full h-full object-cover"/>
+                       <img src="https://cdn.myportfolio.com/d435fa58-d32c-4141-8a15-0f2bfccdea41/70ae6ed5-329b-4618-9b9b-fa764f07f481_rw_1920.png?h=92e35c4ab1015963495c7ac487c7c61c" alt="Open bible with hands" className="w-full h-full object-cover"/>
                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                        <div className="absolute bottom-4 left-4 text-white flex items-center gap-4">
                             <BookOpenIcon className="w-10 h-10 opacity-80" />
